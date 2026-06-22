@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rahil ❤️ Parshvi</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:linear-gradient(135deg,#ff4d6d,#ff8fa3,#ffc2d1);
+overflow-x:hidden;
+color:white;
+}
+
+#particles{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-2;
+}
+
+.hero{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.glass{
+background:rgba(255,255,255,0.12);
+backdrop-filter:blur(15px);
+padding:40px;
+border-radius:25px;
+box-shadow:0 0 40px rgba(255,255,255,0.25);
+max-width:900px;
+}
+
+.hero h1{
+font-size:4rem;
+font-family:'Dancing Script',cursive;
+margin-bottom:10px;
+}
+
+.hero h2{
+font-size:1.3rem;
+font-weight:300;
+margin-bottom:20px;
+}
+
+.btn{
+padding:15px 35px;
+border:none;
+border-radius:50px;
+background:white;
+color:#ff4d6d;
+font-size:18px;
+font-weight:700;
+cursor:pointer;
+transition:.4s;
+}
+
+.btn:hover{
+transform:scale(1.08);
+}
+
+.section{
+padding:80px 20px;
+text-align:center;
+}
+
+.title{
+font-size:3rem;
+font-family:'Dancing Script',cursive;
+margin-bottom:20px;
+}
+
+.counter{
+font-size:1.5rem;
+font-weight:600;
+}
+
+.love-letter{
+max-width:900px;
+margin:auto;
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(10px);
+padding:30px;
+border-radius:25px;
+font-size:1.1rem;
+line-height:2;
+min-height:280px;
+}
+
+.album{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+max-width:1200px;
+margin:auto;
+}
+
+.card{
+overflow:hidden;
+border-radius:20px;
+box-shadow:0 0 20px rgba(255,255,255,.2);
+transition:.5s;
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.03);
+}
+
+.card img{
+width:100%;
+height:350px;
+object-fit:cover;
+}
+
+.music-btn{
+position:fixed;
+right:20px;
+bottom:20px;
+width:65px;
+height:65px;
+border:none;
+border-radius:50%;
+font-size:24px;
+cursor:pointer;
+z-index:1000;
+}
+
+.popup{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:white;
+color:#ff4d6d;
+padding:30px;
+border-radius:20px;
+text-align:center;
+display:none;
+z-index:9999;
+width:90%;
+max-width:450px;
+box-shadow:0 0 50px rgba(0,0,0,.3);
+}
+
+.popup button{
+margin-top:15px;
+padding:10px 25px;
+border:none;
+background:#ff4d6d;
+color:white;
+border-radius:30px;
+cursor:pointer;
+}
+
+.heart{
+position:fixed;
+bottom:-10px;
+color:white;
+animation:float 6s linear infinite;
+pointer-events:none;
+}
+
+@keyframes float{
+0%{
+transform:translateY(0);
+opacity:1;
+}
+100%{
+transform:translateY(-100vh);
+opacity:0;
+}
+}
+
+footer{
+padding:50px;
+font-size:18px;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:2.8rem;
+}
+
+.title{
+font-size:2.2rem;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<audio id="bgMusic" loop>
+<source src="MUSIC_URL_HERE" type="audio/mpeg">
+</audio>
+
+<div class="popup" id="popup">
+<h2>💖 A Special Message 💖</h2>
+
+<p>
+Parshvi, you are the most beautiful part of my life.
+Thank you for every smile, every memory and every moment.
+❤️
+</p>
+
+<button onclick="closePopup()">Close</button>
+</div>
+
+<section class="hero">
+
+<div class="glass">
+
+<h1>❤️ Rahil & Parshvi ❤️</h1>
+
+<h2>
+Our Love Story Started On
+<br>
+22 January 2026 ✨
+</h2>
+
+<button class="btn" onclick="startLoveJourney()">
+Open My Heart ❤️
+</button>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 class="title">
+⏳ Our Love Timer
+</h2>
+
+<div class="counter" id="loveCounter"></div>
+
+</section>
+
+<section class="section">
+
+<h2 class="title">
+💌 A Letter For You
+</h2>
+
+<div class="love-letter" id="typewriter"></div>
+
+</section>
+
+<section class="section">
+
+<h2 class="title">
+📸 Our Beautiful Memories
+</h2>
+
+<div class="album">
+
+<div class="card">
+<img src="C:\Users\morah\OneDrive\Desktop\Exam\n.jpeg">
+</div>
+
+<div class="card">
+<img src="C:\Users\morah\OneDrive\Desktop\Exam\1.jpeg">
+</div>
+
+<div class="card">
+<img src="C:\Users\morah\OneDrive\Desktop\Exam\2.jpeg">
+</div>
+
+<div class="card">
+<img src="C:\Users\morah\OneDrive\Desktop\Exam\4.jpeg">
+</div>
+
+<div class="card">
+<img src="C:\Users\morah\OneDrive\Desktop\Exam\5.jpeg">
+</div>
+
+</div>
+
+</section>
+<button class="music-btn" onclick="toggleMusic()">
+🎵
+</button>
+
+<footer>
+Made With ❤️ By Rahil For Parshvi Forever ♾️
+</footer>
+
+<script>
+
+// ===== LOVE LETTER =====
+
+const message = `
+
+Parshvi i Love you baby ❤️
+
+Baby sorry aa 5 month me tne hurt kri hoy to sorry baby me bhu j bhulo kri chhe mne maaf cri deje baby but mu tara thi dil thi pyaar karu chu.
+
+Baby tu mara mate badhu j chhe hmesha ,ari j reje aa to khali 5 month thaya che mne tmaro sath 7 janam sudhi joiye.
+
+Baby i Love You so much ❤️
+
+🥺 Miss You Every Single Day Baby 🥺
+
+Forever Yours,
+Rahil ❤️
+
+`;
+
+let i = 0;
+
+function typeWriter(){
+
+if(i < message.length){
+
+document.getElementById("typewriter").innerHTML +=
+message.charAt(i);
+
+i++;
+
+setTimeout(typeWriter,40);
+
+}
+
+}
+
+// ===== START JOURNEY =====
+
+function startLoveJourney(){
+
+document
+.getElementById("bgMusic")
+.play();
+
+window.scrollTo({
+top:window.innerHeight,
+behavior:"smooth"
+});
+
+if(i===0){
+typeWriter();
+}
+
+setTimeout(()=>{
+document
+.getElementById("popup")
+.style.display="block";
+},3000);
+
+}
+
+// ===== POPUP =====
+
+function closePopup(){
+
+document
+.getElementById("popup")
+.style.display="none";
+
+}
+
+// ===== LOVE TIMER =====
+
+function updateCounter(){
+
+const startDate =
+new Date("January 22, 2026 00:00:00");
+
+const now = new Date();
+
+const diff = now - startDate;
+
+const days =
+Math.floor(diff/(1000*60*60*24));
+
+const hours =
+Math.floor((diff/(1000*60*60))%24);
+
+const minutes =
+Math.floor((diff/(1000*60))%60);
+
+const seconds =
+Math.floor((diff/1000)%60);
+
+document.getElementById("loveCounter")
+.innerHTML =
+
+`❤️ ${days} Days
+${hours} Hours
+${minutes} Minutes
+${seconds} Seconds ❤️`;
+
+}
+
+setInterval(updateCounter,1000);
+
+updateCounter();
+
+// ===== MUSIC BUTTON =====
+
+const music =
+document.getElementById("bgMusic");
+
+function toggleMusic(){
+
+if(music.paused){
+
+music.play();
+
+}else{
+
+music.pause();
+
+}
+
+}
+
+// ===== FLOATING HEARTS =====
+
+function createHeart(){
+
+const heart =
+document.createElement("div");
+
+heart.classList.add("heart");
+
+heart.innerHTML="❤️";
+
+heart.style.left =
+Math.random()*100+"vw";
+
+heart.style.fontSize =
+(Math.random()*25+20)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+
+heart.remove();
+
+},6000);
+
+}
+
+setInterval(createHeart,350);
+
+// ===== PARTICLES =====
+
+const canvas =
+document.getElementById("particles");
+
+const ctx =
+canvas.getContext("2d");
+
+canvas.width =
+window.innerWidth;
+
+canvas.height =
+window.innerHeight;
+
+let particles=[];
+
+for(let i=0;i<120;i++){
+
+particles.push({
+
+x:Math.random()*canvas.width,
+
+y:Math.random()*canvas.height,
+
+r:Math.random()*3+1,
+
+dx:(Math.random()-0.5),
+
+dy:(Math.random()-0.5)
+
+});
+
+}
+
+function animate(){
+
+ctx.clearRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
+
+particles.forEach(p=>{
+
+ctx.beginPath();
+
+ctx.arc(
+p.x,
+p.y,
+p.r,
+0,
+Math.PI*2
+);
+
+ctx.fillStyle=
+"rgba(255,255,255,0.7)";
+
+ctx.fill();
+
+p.x += p.dx;
+
+p.y += p.dy;
+
+if(p.x<0||p.x>canvas.width)
+p.dx*=-1;
+
+if(p.y<0||p.y>canvas.height)
+p.dy*=-1;
+
+});
+
+requestAnimationFrame(
+animate
+);
+
+}
+
+animate();
+
+window.addEventListener(
+"resize",
+()=>{
+
+canvas.width=
+window.innerWidth;
+
+canvas.height=
+window.innerHeight;
+
+}
+);
+
+</script>
+
+</body>
+</html>
